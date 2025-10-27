@@ -1,23 +1,14 @@
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import logoImage from "@/public/logo.png";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import ProductsView from "@/components/ProductsView";
 import CartButton from "@/components/CartButton";
 import Footer from "@/components/Footer";
-import { categoryToSlug } from "@/lib/categories";
+import { CATEGORY_ORDER } from "@/lib/categories";
 import { cookies } from "next/headers";
 
 const ADMIN_EMAIL = "shantradersinc@gmail.com";
-const CATEGORY_OPTIONS = [
-  "OTC Medicine",
-  "5 hr energy",
-  "Deodorant",
-  "Rolling papers",
-  "Lighters",
-  "Incense",
-  "Others",
-];
 
 export const revalidate = 0;
 
@@ -47,7 +38,7 @@ async function fetchProducts(supabase) {
         ...item,
         in_stock: true,
         is_popular: false,
-        category: CATEGORY_OPTIONS.includes(item.category)
+        category: CATEGORY_ORDER.includes(item.category)
           ? item.category
           : "Others",
       }));
@@ -63,7 +54,7 @@ async function fetchProducts(supabase) {
       typeof item.in_stock === "boolean" ? item.in_stock : true,
     is_popular:
       typeof item.is_popular === "boolean" ? item.is_popular : false,
-    category: CATEGORY_OPTIONS.includes(item.category)
+    category: CATEGORY_ORDER.includes(item.category)
       ? item.category
       : "Others",
   }));
@@ -102,37 +93,8 @@ export default async function Home() {
           </div>
         </div>
 
-        <div className="mx-auto flex w-full max-w-7xl gap-8">
-          <aside className="hidden lg:block lg:w-64 lg:flex-shrink-0">
-            <div className="sticky top-28 rounded-3xl border border-slate-200 bg-white p-7 shadow-xl transition-transform duration-300 hover:-translate-y-1">
-              <div className="flex w-full flex-col gap-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-500">
-                  Explore
-                </p>
-                <ul className="space-y-3">
-                  {CATEGORY_OPTIONS.map((category) => (
-                    <li key={`sticky-${category}`}>
-                      <Link
-                        href={`/category/${categoryToSlug(category)}`}
-                        className="flex items-center justify-between rounded-2xl px-5 py-3 text-sm font-semibold text-gray-700 shadow-sm transition-all duration-200 hover:-translate-x-1 hover:bg-blue-100/60 hover:text-blue-600"
-                      >
-                        <span className="flex items-center gap-3">
-                          <span className="text-blue-400">▸</span>
-                          {category}
-                        </span>
-                        <span className="text-xs text-blue-400">Browse</span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </aside>
-
-          <section
-            id="catalogue"
-            className="flex flex-1 flex-col gap-12"
-          >
+        <div className="mx-auto w-full max-w-7xl space-y-12">
+          <section className="flex flex-col gap-12">
           <header className="rounded-3xl bg-gradient-to-br from-[#eef2ff] to-white p-12 text-center shadow-lg ring-1 ring-slate-200">
             <div className="mx-auto flex max-w-xl flex-col items-center gap-6">
               <div className="flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border border-blue-200 bg-white shadow-md">
@@ -167,29 +129,6 @@ export default async function Home() {
             </div>
             <div className="mx-auto mt-8 h-1 w-24 rounded-full bg-blue-500 shadow-sm"></div>
           </header>
-
-          <details className="block rounded-2xl border border-slate-200 bg-white p-4 shadow-md transition-colors duration-200 hover:border-blue-300 lg:hidden">
-            <summary className="flex cursor-pointer items-center justify-between text-sm font-semibold uppercase tracking-[0.3em] text-gray-500">
-              Categories
-              <span className="text-blue-400">▾</span>
-            </summary>
-            <ul className="mt-4 space-y-2">
-              {CATEGORY_OPTIONS.map((category) => (
-                <li key={`mobile-${category}`}>
-                  <Link
-                    href={`/category/${categoryToSlug(category)}`}
-                    className="flex items-center justify-between rounded-xl px-4 py-2 text-sm font-medium text-gray-700 transition-all duration-200 hover:bg-blue-50 hover:text-blue-600"
-                  >
-                    <span className="flex items-center gap-2">
-                      <span className="text-blue-400">▸</span>
-                      {category}
-                    </span>
-                    <span className="text-xs text-blue-400">→</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </details>
 
           <ProductsView
             initialProducts={products}

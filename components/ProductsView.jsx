@@ -321,6 +321,23 @@ export default function ProductsView({
         </div>
       </div>
 
+      <div className="mx-auto w-full max-w-5xl">
+        <div className="flex flex-wrap items-center justify-center gap-3 rounded-3xl border border-blue-100 bg-white/90 p-4 shadow-sm ring-1 ring-blue-100 backdrop-blur">
+          {CATEGORY_ORDER.map((category) => (
+            <Link
+              key={`pill-${category}`}
+              href={`/category/${categoryToSlug(category)}`}
+              className="group inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-blue-600 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-50 hover:text-blue-700 hover:shadow-md"
+            >
+              <span>{category}</span>
+              <span className="text-xs font-semibold text-blue-400 transition-colors duration-200 group-hover:text-blue-600">
+                Browse →
+              </span>
+            </Link>
+          ))}
+        </div>
+      </div>
+
       {popularProducts.length > 0 ? (
         <section className="mb-12 flex flex-col gap-4 rounded-3xl border border-blue-100 bg-white p-6 shadow-md">
           <div className="flex flex-col gap-2">
