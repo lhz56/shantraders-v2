@@ -8,7 +8,7 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "1rem",
+      padding: "1rem", // ✅ Codex fix for Vercel scaling
     },
     extend: {
       colors: {

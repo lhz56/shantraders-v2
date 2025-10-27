@@ -40,6 +40,7 @@
     scroll-behavior: smooth;
     color: var(--color-foreground);
     background-color: var(--color-background);
+    zoom: 1; /* ✅ Codex fix for Vercel scaling */
   }
 
   body {
@@ -49,6 +50,7 @@
     max-width: 100vw;
     overflow-x: hidden;
     box-sizing: border-box;
+    zoom: 1; /* ✅ Codex fix for Vercel scaling */
     @apply bg-[var(--color-background)] text-[var(--color-foreground)] antialiased min-h-screen leading-relaxed;
   }
 
