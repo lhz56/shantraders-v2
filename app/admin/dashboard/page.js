@@ -17,8 +17,8 @@ export default function AdminDashboardPage() {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-slate-50">
-        <p className="text-sm text-slate-500">Loading dashboard…</p>
+      <div className="flex min-h-screen items-center justify-center bg-[#f4f4f7]">
+        <p className="text-sm text-gray-500">Loading dashboard…</p>
       </div>
     );
   }
@@ -28,24 +28,24 @@ export default function AdminDashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 px-6 py-12">
-      <div className="mx-auto flex max-w-4xl flex-col gap-10">
-        <header className="rounded-3xl bg-white p-8 shadow-lg ring-1 ring-slate-200">
-          <h1 className="text-3xl font-semibold text-slate-900">
+    <div className="min-h-screen bg-[#f4f4f7] px-6 py-12">
+      <div className="mx-auto flex max-w-5xl flex-col gap-10">
+        <header className="rounded-xl bg-white p-8 shadow-sm ring-1 ring-gray-100">
+          <h1 className="text-3xl font-semibold text-gray-900">
             Admin dashboard
           </h1>
-          <p className="mt-3 text-sm text-slate-600">
+          <p className="mt-3 text-sm text-gray-600">
             Welcome back, {session.user?.email}. Use the tools below to manage
             the Shan Traders catalogue.
           </p>
         </header>
 
         <section className="grid gap-6 lg:grid-cols-2">
-          <div className="rounded-3xl bg-white p-6 shadow ring-1 ring-slate-200">
-            <h2 className="text-lg font-semibold text-slate-900">
+          <div className="rounded-xl bg-white p-6 shadow-sm ring-1 ring-gray-200">
+            <h2 className="text-lg font-semibold text-gray-900">
               Quick actions
             </h2>
-            <p className="mt-2 text-sm text-slate-500">
+            <p className="mt-2 text-sm text-gray-600">
               Product management features are coming soon. For now use the
               Supabase dashboard while we finish the in-app experience.
             </p>
@@ -74,11 +74,11 @@ export default function AdminDashboardPage() {
             </div>
           </div>
 
-          <div className="rounded-3xl bg-white p-6 shadow ring-1 ring-slate-200">
-            <h2 className="text-lg font-semibold text-slate-900">
+          <div className="rounded-xl bg-white p-6 shadow-sm ring-1 ring-gray-200">
+            <h2 className="text-lg font-semibold text-gray-900">
               Session controls
             </h2>
-            <p className="mt-2 text-sm text-slate-500">
+            <p className="mt-2 text-sm text-gray-600">
               Sign out when you are done to keep the dashboard secure.
             </p>
             <LogoutButton className="mt-4" />

@@ -12,7 +12,7 @@ export const dynamic = "force-dynamic";
 async function fetchAdminProducts(supabase) {
   const { data, error } = await supabase
     .from("products")
-    .select("id, name, image_url, in_stock, is_popular")
+    .select("id, name, image_url, in_stock, is_popular, category")
     .order("name", { ascending: true });
 
   if (error) {
@@ -30,6 +30,7 @@ async function fetchAdminProducts(supabase) {
         ...item,
         in_stock: true,
         is_popular: false,
+        category: "Others",
       }));
     }
 
@@ -42,6 +43,7 @@ async function fetchAdminProducts(supabase) {
       typeof item.in_stock === "boolean" ? item.in_stock : true,
     is_popular:
       typeof item.is_popular === "boolean" ? item.is_popular : false,
+    category: item.category || "Others",
   }));
 }
 
@@ -71,27 +73,27 @@ export default async function AdminPage() {
   }
 
   return (
-    <main className="px-4 pb-16 pt-10 sm:px-6 lg:px-8">
+    <main className="bg-[#f4f4f7] px-4 pb-20 pt-12 sm:px-6 lg:px-8">
       <section className="mx-auto flex max-w-6xl flex-col gap-10">
-        <header className="flex flex-col gap-6 rounded-3xl bg-white/90 p-10 shadow-lg ring-1 ring-slate-200 backdrop-blur dark:bg-slate-900/80 dark:ring-slate-700">
+        <header className="flex flex-col gap-6 rounded-3xl bg-white p-10 shadow-md ring-1 ring-blue-100">
           <div className="flex flex-col gap-2">
-            <span className="text-sm font-semibold uppercase tracking-[0.35em] text-brand-500">
+            <span className="text-sm font-semibold uppercase tracking-[0.35em] text-blue-500">
               Admin Console
             </span>
-            <h1 className="text-3xl font-semibold text-slate-900 dark:text-slate-100">
+            <h1 className="text-3xl font-semibold text-gray-900">
               Manage Shan Traders catalogue
             </h1>
-            <p className="text-sm text-slate-600 dark:text-slate-300">
+            <p className="text-sm text-gray-600">
               Add new products, update inventory, and curate popular picks in real
               time.
             </p>
           </div>
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.26em] text-slate-400">
+              <p className="text-xs font-semibold uppercase tracking-[0.26em] text-gray-400">
                 Signed in as
               </p>
-              <p className="text-sm font-medium text-slate-700 dark:text-slate-200">
+              <p className="text-sm font-medium text-gray-700">
                 {session.user?.email}
               </p>
             </div>

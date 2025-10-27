@@ -78,20 +78,20 @@ export default function AdminLoginPage() {
 
   if (checkingSession) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-slate-50">
-        <p className="text-sm text-slate-500">Checking authentication…</p>
+      <div className="flex min-h-screen items-center justify-center bg-[#f4f4f7]">
+        <p className="text-sm text-gray-500">Checking authentication…</p>
       </div>
     );
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-16">
-      <div className="w-full max-w-md rounded-3xl bg-white p-10 shadow-lg ring-1 ring-slate-200">
+    <div className="flex min-h-screen items-center justify-center bg-[#f4f4f7] px-4 py-16">
+      <div className="w-full max-w-md rounded-xl bg-white p-10 shadow-sm ring-1 ring-gray-200">
         <div className="mb-8 space-y-2 text-center">
-          <h1 className="text-2xl font-semibold text-slate-900">
+          <h1 className="text-2xl font-semibold text-gray-900">
             Shan Traders Admin
           </h1>
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-gray-600">
             Sign in with your admin credentials to manage the catalogue.
           </p>
         </div>
@@ -100,7 +100,7 @@ export default function AdminLoginPage() {
           <div className="space-y-2">
             <label
               htmlFor="email"
-              className="text-sm font-medium text-slate-700"
+              className="text-sm font-medium text-gray-700"
             >
               Email
             </label>
@@ -112,7 +112,7 @@ export default function AdminLoginPage() {
               required
               value={form.email}
               onChange={handleChange}
-              className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-900 shadow-sm transition focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-200"
+              className="w-full rounded-md border border-gray-200 px-4 py-2 text-sm text-gray-900 shadow-sm transition focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300"
               placeholder="admin@example.com"
             />
           </div>
@@ -120,7 +120,7 @@ export default function AdminLoginPage() {
           <div className="space-y-2">
             <label
               htmlFor="password"
-              className="text-sm font-medium text-slate-700"
+              className="text-sm font-medium text-gray-700"
             >
               Password
             </label>
@@ -132,7 +132,7 @@ export default function AdminLoginPage() {
               required
               value={form.password}
               onChange={handleChange}
-              className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-900 shadow-sm transition focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-200"
+              className="w-full rounded-md border border-gray-200 px-4 py-2 text-sm text-gray-900 shadow-sm transition focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300"
               placeholder="••••••••"
             />
           </div>
@@ -141,7 +141,7 @@ export default function AdminLoginPage() {
             <button
               type="submit"
               disabled={submitting}
-              className="w-full rounded-md bg-gray-200 px-4 py-2 text-sm font-semibold text-gray-800 shadow-sm transition-colors hover:bg-gray-300 disabled:cursor-not-allowed disabled:opacity-60"
+              className="w-full rounded-md bg-black px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {submitting ? "Signing in…" : "Sign in"}
             </button>

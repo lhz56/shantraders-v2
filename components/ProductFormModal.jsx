@@ -7,6 +7,8 @@ function cx(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
+import { CATEGORY_ORDER } from "@/lib/categories";
+
 function Toggle({ label, checked, onChange, disabled }) {
   return (
     <button
@@ -55,6 +57,7 @@ export default function ProductFormModal({
   const [isPopular, setIsPopular] = useState(false);
   const [file, setFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState("");
+  const [category, setCategory] = useState(CATEGORY_ORDER[0]);
 
   useEffect(() => {
     if (!open) return;
@@ -67,6 +70,11 @@ export default function ProductFormModal({
       typeof initialData?.is_popular === "boolean"
         ? initialData.is_popular
         : false
+    );
+    setCategory(
+      CATEGORY_ORDER.includes(initialData?.category)
+        ? initialData.category
+        : CATEGORY_ORDER[0]
     );
     setFile(null);
     const resolved = initialData?.image_url
@@ -105,6 +113,7 @@ export default function ProductFormModal({
       name,
       in_stock: inStock,
       is_popular: isPopular,
+      category,
       file,
     });
   };
@@ -210,6 +219,28 @@ export default function ProductFormModal({
               onChange={setIsPopular}
               disabled={disabled}
             />
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <label
+              htmlFor="product-category"
+              className="text-sm font-medium text-slate-700"
+            >
+              Category
+            </label>
+            <select
+              id="product-category"
+              value={category}
+              onChange={(event) => setCategory(event.target.value)}
+              disabled={disabled}
+              className="rounded-md border border-slate-200 px-4 py-2 text-sm text-slate-900 shadow-sm focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-200 disabled:cursor-not-allowed disabled:bg-slate-50 dark:border-slate-700 dark:bg-slate-900/80 dark:text-slate-100"
+            >
+              {CATEGORY_ORDER.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
           </div>
 
           {error ? (

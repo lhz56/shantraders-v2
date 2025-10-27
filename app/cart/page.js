@@ -79,25 +79,25 @@ export default function CartPage() {
   };
 
   return (
-    <main className="px-4 pb-16 pt-16 sm:px-6 lg:px-8">
+    <main className="bg-[#f4f4f7] px-4 pb-20 pt-16 sm:px-6 lg:px-8">
       <section className="mx-auto flex max-w-5xl flex-col gap-10">
         <header className="space-y-2 text-center sm:text-left">
-          <h1 className="text-3xl font-semibold text-slate-900 dark:text-slate-100">
+          <h1 className="text-3xl font-semibold text-gray-900">
             Quote Cart
           </h1>
-          <p className="text-sm text-slate-600 dark:text-slate-400">
+          <p className="text-sm text-gray-600">
             Review your selected products and send us a request for pricing.
           </p>
         </header>
 
         <div className="grid gap-8 lg:grid-cols-[2fr,1fr]">
-          <div className="space-y-4 rounded-3xl bg-white/90 p-6 shadow-sm ring-1 ring-slate-200 dark:bg-slate-900/80 dark:ring-slate-700">
-            <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
+          <div className="space-y-4 rounded-xl bg-white p-6 shadow-sm ring-1 ring-gray-200">
+            <h2 className="text-lg font-semibold text-gray-900">
               Items ({totalCount})
             </h2>
 
             {items.length === 0 ? (
-              <p className="text-sm text-slate-500 dark:text-slate-400">
+              <p className="text-sm text-gray-500">
                 Your quote cart is empty. Browse products to add items.
               </p>
             ) : (
@@ -105,9 +105,9 @@ export default function CartPage() {
                 {items.map((item) => (
                   <li
                     key={item.id}
-                    className="flex gap-4 rounded-2xl border border-slate-200 p-4 shadow-sm dark:border-slate-700"
+                    className="flex gap-4 rounded-xl border border-gray-200 p-4 shadow-sm"
                   >
-                    <div className="relative h-20 w-20 overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800">
+                    <div className="relative h-20 w-20 overflow-hidden rounded-lg bg-gray-100">
                       <Image
                         src={resolveImageUrl(item.image_url)}
                         alt={item.name}
@@ -118,29 +118,29 @@ export default function CartPage() {
                     </div>
                     <div className="flex flex-1 flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                       <div>
-                        <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">
+                        <p className="text-sm font-semibold text-gray-900">
                           {item.name}
                         </p>
-                        <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
+                        <p className="text-xs uppercase tracking-[0.18em] text-gray-400">
                           Product ID: {item.id}
                         </p>
                       </div>
                       <div className="flex items-center gap-3">
-                        <div className="flex items-center rounded-md border border-slate-200 dark:border-slate-700">
+                        <div className="flex items-center rounded-md border border-gray-200">
                           <button
                             type="button"
                             onClick={() => handleQuantityChange(item.id, -1)}
-                            className="px-3 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-gray-200 dark:text-slate-200 dark:hover:bg-slate-800"
+                            className="px-3 py-2 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-200"
                           >
                             −
                           </button>
-                          <span className="min-w-[2ch] px-3 text-sm font-semibold text-slate-900 dark:text-slate-100">
+                          <span className="min-w-[2ch] px-3 text-sm font-semibold text-gray-900">
                             {item.quantity}
                           </span>
                           <button
                             type="button"
                             onClick={() => handleQuantityChange(item.id, 1)}
-                            className="px-3 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-gray-200 dark:text-slate-200 dark:hover:bg-slate-800"
+                            className="px-3 py-2 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-200"
                           >
                             +
                           </button>
@@ -160,15 +160,15 @@ export default function CartPage() {
             )}
           </div>
 
-          <aside className="space-y-6 rounded-3xl bg-white/90 p-6 shadow-sm ring-1 ring-slate-200 dark:bg-slate-900/80 dark:ring-slate-700">
-            <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
+          <aside className="space-y-6 rounded-xl bg-white p-6 shadow-sm ring-1 ring-gray-200">
+            <h2 className="text-lg font-semibold text-gray-900">
               Request a Quote
             </h2>
             <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="quote-email"
-                  className="text-sm font-medium text-slate-700 dark:text-slate-200"
+                  className="text-sm font-medium text-gray-700"
                 >
                   Email
                 </label>
@@ -178,14 +178,14 @@ export default function CartPage() {
                   required
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
-                  className="rounded-md border border-slate-200 px-4 py-2 text-sm text-slate-900 shadow-sm focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-200 dark:border-slate-700 dark:bg-slate-900/80 dark:text-slate-100"
+                  className="rounded-md border border-gray-200 px-4 py-2 text-sm text-gray-900 shadow-sm focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300"
                   placeholder="you@company.com"
                 />
               </div>
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="quote-company"
-                  className="text-sm font-medium text-slate-700 dark:text-slate-200"
+                  className="text-sm font-medium text-gray-700"
                 >
                   Company Name
                 </label>
@@ -195,7 +195,7 @@ export default function CartPage() {
                   required
                   value={company}
                   onChange={(event) => setCompany(event.target.value)}
-                  className="rounded-md border border-slate-200 px-4 py-2 text-sm text-slate-900 shadow-sm focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-200 dark:border-slate-700 dark:bg-slate-900/80 dark:text-slate-100"
+                  className="rounded-md border border-gray-200 px-4 py-2 text-sm text-gray-900 shadow-sm focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300"
                   placeholder="Shan Traders Partner LLC"
                 />
               </div>
@@ -214,7 +214,7 @@ export default function CartPage() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full rounded-md bg-gray-200 px-4 py-2 text-sm font-semibold text-gray-800 shadow-sm transition-colors hover:bg-gray-300 disabled:cursor-not-allowed disabled:opacity-60"
+                className="w-full rounded-md bg-black px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {submitting ? "Submitting…" : "Submit Request"}
               </button>

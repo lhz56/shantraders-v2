@@ -23,12 +23,12 @@ export default function AdminToolbar({
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-40 flex max-w-xs flex-col gap-3 rounded-3xl bg-white/95 p-4 shadow-xl ring-1 ring-inset ring-slate-200 backdrop-blur-sm dark:bg-slate-900/95 dark:ring-slate-700">
+    <div className="fixed bottom-6 right-6 z-40 flex max-w-xs flex-col gap-3 rounded-3xl bg-white p-4 shadow-xl ring-1 ring-inset ring-gray-200 backdrop-blur-sm">
       <div className="flex flex-col gap-1">
-        <span className="text-xs font-medium uppercase tracking-[0.18em] text-slate-400">
+        <span className="text-xs font-medium uppercase tracking-[0.18em] text-gray-400">
           Admin
         </span>
-        <span className="text-sm font-semibold text-slate-800 dark:text-slate-100">
+        <span className="text-sm font-semibold text-gray-800">
           {email}
         </span>
       </div>
@@ -37,7 +37,7 @@ export default function AdminToolbar({
         <button
           type="button"
           onClick={() => router.push("/admin")}
-          className="rounded-md bg-gray-200 px-4 py-2 text-sm font-semibold text-gray-800 shadow-sm transition-colors hover:bg-gray-300"
+          className="rounded-md bg-blue-500 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-600"
         >
           Admin dashboard
         </button>
