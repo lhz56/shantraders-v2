@@ -89,30 +89,6 @@ export default async function Home() {
 
   return (
     <>
-      <aside className="pointer-events-auto fixed left-4 top-28 z-30 hidden w-64 rounded-3xl border border-slate-200 bg-white p-7 shadow-xl transition-all duration-300 hover:-translate-y-1 lg:flex">
-        <div className="flex w-full flex-col gap-5">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-500">
-            Explore
-          </p>
-          <ul className="space-y-3">
-            {CATEGORY_OPTIONS.map((category) => (
-              <li key={`sticky-${category}`}>
-                <Link
-                  href={`/category/${categoryToSlug(category)}`}
-                  className="flex items-center justify-between rounded-2xl px-5 py-3 text-sm font-semibold text-gray-700 shadow-sm transition-all duration-200 hover:-translate-x-1 hover:bg-blue-100/60 hover:text-blue-600"
-                >
-                  <span className="flex items-center gap-3">
-                    <span className="text-blue-400">▸</span>
-                    {category}
-                  </span>
-                  <span className="text-xs text-blue-400">Browse</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </aside>
-
       <main className="relative min-h-screen bg-[#f4f4f7] px-4 pb-24 pt-12 sm:px-6 lg:px-8">
         <div className="pointer-events-none absolute right-4 top-6 z-40 flex flex-col gap-2 sm:right-10">
           <div className="flex gap-2">
@@ -126,7 +102,37 @@ export default async function Home() {
           </div>
         </div>
 
-        <section className="mx-auto flex max-w-7xl flex-col gap-12">
+        <div className="mx-auto flex w-full max-w-7xl gap-8">
+          <aside className="hidden lg:block lg:w-64 lg:flex-shrink-0">
+            <div className="sticky top-28 rounded-3xl border border-slate-200 bg-white p-7 shadow-xl transition-transform duration-300 hover:-translate-y-1">
+              <div className="flex w-full flex-col gap-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-blue-500">
+                  Explore
+                </p>
+                <ul className="space-y-3">
+                  {CATEGORY_OPTIONS.map((category) => (
+                    <li key={`sticky-${category}`}>
+                      <Link
+                        href={`/category/${categoryToSlug(category)}`}
+                        className="flex items-center justify-between rounded-2xl px-5 py-3 text-sm font-semibold text-gray-700 shadow-sm transition-all duration-200 hover:-translate-x-1 hover:bg-blue-100/60 hover:text-blue-600"
+                      >
+                        <span className="flex items-center gap-3">
+                          <span className="text-blue-400">▸</span>
+                          {category}
+                        </span>
+                        <span className="text-xs text-blue-400">Browse</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </aside>
+
+          <section
+            id="catalogue"
+            className="flex flex-1 flex-col gap-12"
+          >
           <header className="rounded-3xl bg-gradient-to-br from-[#eef2ff] to-white p-12 text-center shadow-lg ring-1 ring-slate-200">
             <div className="mx-auto flex max-w-xl flex-col items-center gap-6">
               <div className="flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border border-blue-200 bg-white shadow-md">
@@ -190,7 +196,8 @@ export default async function Home() {
             prefetchedSession={session}
             adminEmail={ADMIN_EMAIL}
           />
-        </section>
+          </section>
+        </div>
       </main>
       <div className="fixed inset-x-0 bottom-0 z-40 flex justify-center bg-gradient-to-t from-gray-900/10 to-transparent px-4 py-4 lg:hidden">
         <CartButton className="max-w-sm flex-1 justify-center" />
