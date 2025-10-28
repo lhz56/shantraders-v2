@@ -13,12 +13,26 @@ export default function LogoutButton({ className = "" }) {
     setLoading(true);
     setError(null);
 
-    const { error } = await supabase.auth.signOut();
-    if (error) {
+    const { error } = await supabase.auth.signOut({ scope: "local" });
+    if (error && error.name !== "AuthSessionMissingError") {
       console.error("[auth.signOut]", error);
       setError(error.message);
       setLoading(false);
       return;
+    }
+
+    try {
+      const response = await fetch("/auth/signout", {
+        method: "POST",
+        headers: {
+          "Cache-Control": "no-store",
+        },
+      });
+      if (!response.ok) {
+        console.warn("[auth.signOut(route)] response not ok", await response.text());
+      }
+    } catch (routeError) {
+      console.warn("[auth.signOut(route)]", routeError);
     }
 
     router.replace("/");
