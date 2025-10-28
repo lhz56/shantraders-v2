@@ -80,54 +80,87 @@ export default async function Home() {
 
   return (
     <>
-      <main className="relative min-h-screen bg-[#f4f4f7] px-4 pb-24 pt-12 sm:px-6 lg:px-8">
+      <main
+        // ✅ Codex visual scale reduction
+        className="relative min-h-screen bg-[#f4f4f7] px-4 pb-20 pt-10 sm:px-5 lg:px-7"
+      >
         <div className="pointer-events-none absolute right-4 top-6 z-40 flex flex-col gap-2 sm:right-10">
           <div className="flex gap-2">
             <CartButton />
             <Link
               href={adminCtaHref}
-              className="pointer-events-auto inline-flex items-center rounded-full bg-gradient-to-r from-[#2563eb] to-[#3b82f6] px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white shadow-lg transition-transform duration-200 hover:-translate-y-0.5 hover:brightness-110"
+              // ✅ Codex visual scale reduction
+              className="pointer-events-auto inline-flex items-center rounded-full bg-gradient-to-r from-[#2563eb] to-[#3b82f6] px-3.5 py-1.5 text-[0.7rem] font-semibold uppercase tracking-wide text-white shadow-lg transition-transform duration-200 hover:-translate-y-0.5 hover:brightness-110"
             >
               {adminCtaLabel}
             </Link>
           </div>
         </div>
 
-        <div className="mx-auto w-full max-w-7xl space-y-12">
-          <section className="flex flex-col gap-12">
-          <header className="rounded-3xl bg-gradient-to-br from-[#eef2ff] to-white p-12 text-center shadow-lg ring-1 ring-slate-200">
-            <div className="mx-auto flex max-w-xl flex-col items-center gap-6">
-              <div className="flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border border-blue-200 bg-white shadow-md">
+        <div
+          // ✅ Codex visual scale reduction
+          className="mx-auto w-full max-w-6xl space-y-10"
+        >
+          <section
+            // ✅ Codex visual scale reduction
+            className="flex flex-col gap-10"
+          >
+          <header
+            // ✅ Codex visual scale reduction
+            className="rounded-3xl bg-gradient-to-br from-[#eef2ff] to-white p-10 text-center shadow-lg ring-1 ring-slate-200"
+          >
+            <div className="mx-auto flex max-w-lg flex-col items-center gap-5">
+              <div
+                // ✅ Codex visual scale reduction
+                className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-full border border-blue-200 bg-white shadow-md"
+              >
                 <Image
                   src={logoImage}
                   alt="Shan Traders Inc. logo"
                   width={96}
                   height={96}
                   priority
-                  className="h-20 w-20 object-contain drop-shadow-sm"
+                  // ✅ Codex visual scale reduction
+                  className="h-16 w-16 object-contain drop-shadow-sm"
                 />
               </div>
-              <div className="space-y-2">
-                <h1 className="text-3xl font-serif font-semibold tracking-tight text-gray-900 md:text-4xl">
+              <div className="space-y-1.5">
+                <h1
+                  // ✅ Codex visual scale reduction
+                  className="text-2xl font-serif font-semibold tracking-tight text-gray-900 md:text-3xl"
+                >
                   Shan Traders Inc.
                 </h1>
-                <p className="text-sm uppercase tracking-[0.35em] text-blue-500">
+                <p
+                  // ✅ Codex visual scale reduction
+                  className="text-xs uppercase tracking-[0.3em] text-blue-500"
+                >
                   shantradersinc@gmail.com
                 </p>
               </div>
-              <p className="text-sm leading-relaxed text-gray-500">
+              <p
+                // ✅ Codex visual scale reduction
+                className="text-xs leading-relaxed text-gray-500"
+              >
                 Premium wholesale goods curated for your storefront. Streamline your inventory without the guesswork.
               </p>
-              <div className="mt-6">
+              <div
+                // ✅ Codex visual scale reduction
+                className="mt-5"
+              >
                 <a
                   href="#catalogue"
-                  className="inline-flex items-center rounded-full bg-gradient-to-r from-[#2563eb] to-[#3b82f6] px-6 py-3 text-sm font-semibold text-white shadow-lg transition-transform duration-200 hover:-translate-y-0.5 hover:brightness-110"
+                  // ✅ Codex visual scale reduction
+                  className="inline-flex items-center rounded-full bg-gradient-to-r from-[#2563eb] to-[#3b82f6] px-5 py-2.5 text-xs font-semibold text-white shadow-lg transition-transform duration-200 hover:-translate-y-0.5 hover:brightness-110"
                 >
                   Explore Our Catalog
                 </a>
               </div>
             </div>
-            <div className="mx-auto mt-8 h-1 w-24 rounded-full bg-blue-500 shadow-sm"></div>
+            <div
+              // ✅ Codex visual scale reduction
+              className="mx-auto mt-6 h-[3px] w-20 rounded-full bg-blue-500 shadow-sm"
+            ></div>
           </header>
 
           <ProductsView

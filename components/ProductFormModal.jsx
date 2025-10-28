@@ -15,7 +15,8 @@ function Toggle({ label, checked, onChange, disabled }) {
       type="button"
       onClick={() => !disabled && onChange(!checked)}
       className={cx(
-        "flex items-center justify-between rounded-md px-4 py-2 text-sm font-semibold transition-colors shadow-sm",
+        // ✅ Codex visual scale reduction
+        "flex items-center justify-between rounded-md px-3.5 py-1.5 text-xs font-semibold transition-colors shadow-sm",
         checked
           ? "bg-emerald-100 text-emerald-700 hover:bg-emerald-200"
           : "bg-gray-200 text-gray-800 hover:bg-gray-300",
@@ -26,14 +27,16 @@ function Toggle({ label, checked, onChange, disabled }) {
       <span>{label}</span>
       <span
         className={cx(
-          "relative inline-flex h-5 w-10 items-center rounded-full transition",
+          // ✅ Codex visual scale reduction
+          "relative inline-flex h-4 w-9 items-center rounded-full transition",
           checked ? "bg-emerald-300" : "bg-gray-300"
         )}
       >
         <span
           className={cx(
-            "inline-block h-4 w-4 rounded-full bg-white transition shadow",
-            checked ? "translate-x-5" : "translate-x-1"
+            // ✅ Codex visual scale reduction
+            "inline-block h-3.5 w-3.5 rounded-full bg-white transition shadow",
+            checked ? "translate-x-4" : "translate-x-1"
           )}
         />
       </span>
@@ -123,32 +126,55 @@ export default function ProductFormModal({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 px-4 py-12 backdrop-blur-sm">
-      <div className="relative w-full max-w-lg rounded-3xl bg-white p-8 shadow-2xl ring-1 ring-slate-200">
+    <div
+      // ✅ Codex visual scale reduction
+      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 px-3 py-10 backdrop-blur-sm"
+    >
+      <div
+        // ✅ Codex visual scale reduction
+        className="relative w-full max-w-md rounded-3xl bg-white p-6 shadow-2xl ring-1 ring-slate-200"
+      >
         <button
           type="button"
           onClick={onClose}
-          className="absolute right-5 top-5 inline-flex h-9 w-9 items-center justify-center rounded-md bg-gray-200 text-sm font-semibold text-gray-800 shadow-sm transition-colors hover:bg-gray-300"
+          // ✅ Codex visual scale reduction
+          className="absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center rounded-md bg-gray-200 text-xs font-semibold text-gray-800 shadow-sm transition-colors hover:bg-gray-300"
           aria-label="Close"
           disabled={disabled}
         >
           ×
         </button>
 
-        <div className="mb-6 space-y-2">
-          <h2 className="text-xl font-semibold text-slate-900">{title}</h2>
-          <p className="text-sm text-slate-500">
+        <div
+          // ✅ Codex visual scale reduction
+          className="mb-4 space-y-2"
+        >
+          <h2
+            // ✅ Codex visual scale reduction
+            className="text-lg font-semibold text-slate-900"
+          >
+            {title}
+          </h2>
+          <p
+            // ✅ Codex visual scale reduction
+            className="text-xs text-slate-500"
+          >
             {isEditable
               ? "Update the product details below."
               : "Add a new product to the Shan Traders catalogue."}
           </p>
         </div>
 
-        <form className="space-y-6" onSubmit={handleSubmit}>
+        <form
+          // ✅ Codex visual scale reduction
+          className="space-y-5"
+          onSubmit={handleSubmit}
+        >
           <div className="flex flex-col gap-3">
             <label
               htmlFor="product-name"
-              className="text-sm font-medium text-slate-700"
+              // ✅ Codex visual scale reduction
+              className="text-xs font-medium text-slate-700"
             >
               Product name
             </label>
@@ -159,29 +185,43 @@ export default function ProductFormModal({
               value={name}
               onChange={(event) => setName(event.target.value)}
               disabled={disabled}
-              className="rounded-2xl border border-slate-200 px-4 py-3 text-sm text-slate-900 shadow-sm transition focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-200 disabled:cursor-not-allowed disabled:bg-slate-50"
+              // ✅ Codex visual scale reduction
+              className="rounded-2xl border border-slate-200 px-3.5 py-2.5 text-xs text-slate-900 shadow-sm transition focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-200 disabled:cursor-not-allowed disabled:bg-slate-50"
               placeholder="Enter product name"
             />
           </div>
 
           <div className="flex flex-col gap-3">
-            <span className="text-sm font-medium text-slate-700">
+            <span
+              // ✅ Codex visual scale reduction
+              className="text-xs font-medium text-slate-700"
+            >
               Product image
             </span>
-            <div className="flex flex-col gap-3 rounded-2xl border border-dashed border-slate-300 bg-slate-50/60 p-4">
+            <div
+              // ✅ Codex visual scale reduction
+              className="flex flex-col gap-2.5 rounded-2xl border border-dashed border-slate-300 bg-slate-50/60 p-3.5"
+            >
               {previewUrl ? (
                 <img
                   src={previewUrl}
                   alt={name || "Product preview"}
-                  className="h-48 w-full rounded-xl object-cover"
+                  // ✅ Codex visual scale reduction
+                  className="h-40 w-full rounded-xl object-cover"
                 />
               ) : (
-                <div className="flex h-48 w-full items-center justify-center rounded-xl border border-slate-200 border-dashed text-sm text-slate-400">
+                <div
+                  // ✅ Codex visual scale reduction
+                  className="flex h-40 w-full items-center justify-center rounded-xl border border-slate-200 border-dashed text-xs text-slate-400"
+                >
                   No image selected
                 </div>
               )}
 
-              <label className="inline-flex w-fit cursor-pointer items-center justify-center rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700">
+              <label
+                // ✅ Codex visual scale reduction
+                className="inline-flex w-fit cursor-pointer items-center justify-center rounded-full bg-slate-900 px-3.5 py-1.5 text-xs font-semibold text-white transition hover:bg-slate-700"
+              >
                 <span>{file ? "Change image" : "Upload image"}</span>
                 <input
                   type="file"
@@ -191,14 +231,20 @@ export default function ProductFormModal({
                   disabled={disabled}
                 />
               </label>
-              <p className="text-xs text-slate-400">
+              <p
+                // ✅ Codex visual scale reduction
+                className="text-[0.65rem] text-slate-400"
+              >
                 Recommended size 600×400px. Accepted formats: PNG, JPG, WebP.
               </p>
             </div>
           </div>
 
           <div className="flex flex-col gap-3">
-            <span className="text-sm font-medium text-slate-700">
+            <span
+              // ✅ Codex visual scale reduction
+              className="text-xs font-medium text-slate-700"
+            >
               Availability
             </span>
             <Toggle
@@ -210,7 +256,10 @@ export default function ProductFormModal({
           </div>
 
           <div className="flex flex-col gap-3">
-            <span className="text-sm font-medium text-slate-700">
+            <span
+              // ✅ Codex visual scale reduction
+              className="text-xs font-medium text-slate-700"
+            >
               Popular pick
             </span>
             <Toggle
@@ -224,7 +273,8 @@ export default function ProductFormModal({
           <div className="flex flex-col gap-3">
             <label
               htmlFor="product-category"
-              className="text-sm font-medium text-slate-700"
+              // ✅ Codex visual scale reduction
+              className="text-xs font-medium text-slate-700"
             >
               Category
             </label>
@@ -233,7 +283,8 @@ export default function ProductFormModal({
               value={category}
               onChange={(event) => setCategory(event.target.value)}
               disabled={disabled}
-              className="rounded-md border border-slate-200 px-4 py-2 text-sm text-slate-900 shadow-sm focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-200 disabled:cursor-not-allowed disabled:bg-slate-50 dark:border-slate-700 dark:bg-slate-900/80 dark:text-slate-100"
+              // ✅ Codex visual scale reduction
+              className="rounded-md border border-slate-200 px-3.5 py-2 text-xs text-slate-900 shadow-sm focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-200 disabled:cursor-not-allowed disabled:bg-slate-50 dark:border-slate-700 dark:bg-slate-900/80 dark:text-slate-100"
             >
               {CATEGORY_ORDER.map((option) => (
                 <option key={option} value={option}>

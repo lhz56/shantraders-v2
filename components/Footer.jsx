@@ -9,10 +9,19 @@ const year = new Date().getFullYear();
 
 export default function Footer() {
   return (
-    <footer className="mt-12 border-t border-gray-200 bg-[#f4f4f7] py-8 text-sm text-[#64748b]">
-      <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 sm:px-6 md:flex-row md:items-start md:justify-between lg:px-8">
+    <footer
+      // ✅ Codex visual scale reduction
+      className="mt-10 border-t border-gray-200 bg-[#f4f4f7] py-6 text-xs text-[#64748b]"
+    >
+      <div
+        // ✅ Codex visual scale reduction
+        className="mx-auto flex max-w-6xl flex-col gap-5 px-4 sm:px-5 md:flex-row md:items-start md:justify-between lg:px-7"
+      >
         <div className="space-y-2">
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gray-400">
+          <p
+            // ✅ Codex visual scale reduction
+            className="text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-gray-400"
+          >
             Contact
           </p>
           <p>
@@ -43,12 +52,21 @@ export default function Footer() {
             </a>
           </p>
         </div>
-        <div className="space-y-2 text-sm md:text-right">
-          <p className="text-xs uppercase tracking-[0.28em] text-gray-400">
+        <div
+          // ✅ Codex visual scale reduction
+          className="space-y-1.5 text-xs md:text-right"
+        >
+          <p
+            // ✅ Codex visual scale reduction
+            className="text-[0.65rem] uppercase tracking-[0.25em] text-gray-400"
+          >
             Shan Traders Inc.
           </p>
           <p>&copy; {year} Shan Traders Inc. All rights reserved.</p>
-          <p className="text-xs text-gray-500 md:text-sm">
+          <p
+            // ✅ Codex visual scale reduction
+            className="text-[0.7rem] text-gray-500 md:text-xs"
+          >
             Note: All new customers must provide valid business registration
             information and a tax ID before purchase.
           </p>

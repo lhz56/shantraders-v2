@@ -23,25 +23,38 @@ export default function AdminToolbar({
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-40 flex max-w-xs flex-col gap-3 rounded-3xl bg-white p-4 shadow-xl ring-1 ring-inset ring-gray-200 backdrop-blur-sm">
-      <div className="flex flex-col gap-1">
-        <span className="text-xs font-medium uppercase tracking-[0.18em] text-gray-400">
+    <div
+      // ✅ Codex visual scale reduction
+      className="fixed bottom-5 right-5 z-40 flex max-w-[14rem] flex-col gap-2.5 rounded-2xl bg-white p-3.5 shadow-xl ring-1 ring-inset ring-gray-200 backdrop-blur-sm"
+    >
+      <div className="flex flex-col gap-0.5">
+        <span
+          // ✅ Codex visual scale reduction
+          className="text-[0.65rem] font-medium uppercase tracking-[0.16em] text-gray-400"
+        >
           Admin
         </span>
-        <span className="text-sm font-semibold text-gray-800">
+        <span
+          // ✅ Codex visual scale reduction
+          className="text-xs font-semibold text-gray-800"
+        >
           {email}
         </span>
       </div>
 
-      <div className="flex flex-col gap-2">
+      <div
+        // ✅ Codex visual scale reduction
+        className="flex flex-col gap-1.5"
+      >
         <button
           type="button"
           onClick={() => router.push("/admin")}
-          className="rounded-md bg-blue-500 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-600"
+          // ✅ Codex visual scale reduction
+          className="rounded-md bg-blue-500 px-3.5 py-1.5 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-blue-600"
         >
           Admin dashboard
         </button>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5">
           <button
             type="button"
             onClick={
@@ -49,7 +62,8 @@ export default function AdminToolbar({
                 ? onAddProduct
                 : () => router.push("/admin?view=add")
             }
-            className="flex-1 rounded-md bg-gray-200 px-4 py-2 text-sm font-semibold text-gray-800 shadow-sm transition-colors hover:bg-gray-300"
+            // ✅ Codex visual scale reduction
+            className="flex-1 rounded-md bg-gray-200 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-sm transition-colors hover:bg-gray-300"
           >
             Add product
           </button>
@@ -60,7 +74,8 @@ export default function AdminToolbar({
                 ? onEditProducts
                 : () => router.push("/admin?view=edit")
             }
-            className="flex-1 rounded-md bg-gray-200 px-4 py-2 text-sm font-semibold text-gray-800 shadow-sm transition-colors hover:bg-gray-300"
+            // ✅ Codex visual scale reduction
+            className="flex-1 rounded-md bg-gray-200 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-sm transition-colors hover:bg-gray-300"
           >
             Edit products
           </button>

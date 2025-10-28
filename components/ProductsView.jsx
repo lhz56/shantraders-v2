@@ -302,12 +302,15 @@ export default function ProductsView({
         </div>
       ) : null}
 
-      <div className="mx-auto w-full max-w-xl lg:mx-0 lg:max-w-2xl">
+      <div
+        // ✅ Codex visual scale reduction
+        className="mx-auto w-full max-w-lg lg:mx-0 lg:max-w-xl"
+      >
         <label htmlFor="product-search" className="sr-only">
           Search products
         </label>
         <div className="relative">
-          <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-blue-400">
+          <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-blue-400">
             🔍
           </span>
           <input
@@ -316,21 +319,32 @@ export default function ProductsView({
             placeholder="Search for Tylenol, Advil..."
             value={searchQuery}
             onChange={(event) => setSearchQuery(event.target.value)}
-            className="w-full rounded-full border border-gray-200 bg-white pl-12 pr-6 py-3 text-sm text-gray-700 shadow-md placeholder:text-[#94a3b8] transition-all duration-200 focus:border-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-200"
+            // ✅ Codex visual scale reduction
+            className="w-full rounded-full border border-gray-200 bg-white pl-10 pr-5 py-2.5 text-xs text-gray-700 shadow-md placeholder:text-[#94a3b8] transition-all duration-200 focus:border-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-200"
           />
         </div>
       </div>
 
-      <div className="mx-auto w-full max-w-5xl">
-        <div className="flex flex-wrap items-center justify-center gap-3 rounded-3xl border border-blue-100 bg-white/90 p-4 shadow-sm ring-1 ring-blue-100 backdrop-blur">
+      <div
+        // ✅ Codex visual scale reduction
+        className="mx-auto w-full max-w-4xl"
+      >
+        <div
+          // ✅ Codex visual scale reduction
+          className="flex flex-wrap items-center justify-center gap-2 rounded-3xl border border-blue-100 bg-white/90 p-3 shadow-sm ring-1 ring-blue-100 backdrop-blur"
+        >
           {CATEGORY_ORDER.map((category) => (
             <Link
               key={`pill-${category}`}
               href={`/category/${categoryToSlug(category)}`}
-              className="group inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-blue-600 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-50 hover:text-blue-700 hover:shadow-md"
+              // ✅ Codex visual scale reduction
+              className="group inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-medium text-blue-600 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-50 hover:text-blue-700 hover:shadow-md"
             >
               <span>{category}</span>
-              <span className="text-xs font-semibold text-blue-400 transition-colors duration-200 group-hover:text-blue-600">
+              <span
+                // ✅ Codex visual scale reduction
+                className="text-[0.65rem] font-semibold text-blue-400 transition-colors duration-200 group-hover:text-blue-600"
+              >
                 Browse →
               </span>
             </Link>
@@ -339,20 +353,35 @@ export default function ProductsView({
       </div>
 
       {popularProducts.length > 0 ? (
-        <section className="mb-12 flex flex-col gap-4 rounded-3xl border border-blue-100 bg-white p-6 shadow-md">
-          <div className="flex flex-col gap-2">
-            <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+        <section
+          // ✅ Codex visual scale reduction
+          className="mb-10 flex flex-col gap-3 rounded-3xl border border-blue-100 bg-white p-5 shadow-md"
+        >
+          <div className="flex flex-col gap-1.5">
+            <h2
+              // ✅ Codex visual scale reduction
+              className="text-xl font-bold tracking-tight text-gray-900"
+            >
               ⭐ Popular Items
             </h2>
-            <p className="text-sm text-gray-500">
+            <p
+              // ✅ Codex visual scale reduction
+              className="text-xs text-gray-500"
+            >
               Hand-selected favorites from the Shan Traders catalogue.
             </p>
-            <p className="text-sm text-gray-400">
+            <p
+              // ✅ Codex visual scale reduction
+              className="text-xs text-gray-400"
+            >
               Hand-picked favorites trusted by our regular customers.
             </p>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div
+            // ✅ Codex visual scale reduction
+            className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+          >
             {popularProducts.map((product) => (
               <ProductCard
                 key={`popular-${product.id}`}
@@ -366,24 +395,44 @@ export default function ProductsView({
         </section>
       ) : null}
 
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-        <h2 className="text-xl font-bold tracking-tight text-gray-900">Browse Catalogue</h2>
+      <div
+        // ✅ Codex visual scale reduction
+        className="flex flex-col sm:flex-row sm:items-center sm:justify-between"
+      >
+        <h2
+          // ✅ Codex visual scale reduction
+          className="text-lg font-bold tracking-tight text-gray-900"
+        >
+          Browse Catalogue
+        </h2>
         <p className="text-xs uppercase tracking-[0.24em] text-gray-400">
           {filteredProducts.length} items
         </p>
       </div>
 
       {visibleProducts.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-gray-200 bg-white p-12 text-center shadow-sm">
-          <h2 className="text-xl font-semibold text-gray-900">
+        <div
+          // ✅ Codex visual scale reduction
+          className="rounded-xl border border-dashed border-gray-200 bg-white p-10 text-center shadow-sm"
+        >
+          <h2
+            // ✅ Codex visual scale reduction
+            className="text-lg font-semibold text-gray-900"
+          >
             No products yet
           </h2>
-          <p className="mt-2 text-sm text-gray-600">
+          <p
+            // ✅ Codex visual scale reduction
+            className="mt-1.5 text-xs text-gray-600"
+          >
             Add products in Supabase to see them appear here instantly.
           </p>
         </div>
       ) : filteredProducts.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-gray-200 bg-white p-10 text-center text-sm text-gray-500 shadow-sm">
+        <div
+          // ✅ Codex visual scale reduction
+          className="rounded-xl border border-dashed border-gray-200 bg-white p-8 text-center text-xs text-gray-500 shadow-sm"
+        >
           No products match “{searchQuery.trim()}”. Try a different name.
         </div>
       ) : (
@@ -402,22 +451,30 @@ export default function ProductsView({
           return (
             <section
               key={category}
-              className="mb-12 flex flex-col gap-4 rounded-3xl border border-gray-200 bg-white p-6 shadow-md last:mb-0"
+              // ✅ Codex visual scale reduction
+              className="mb-10 flex flex-col gap-3.5 rounded-3xl border border-gray-200 bg-white p-5 shadow-md last:mb-0"
             >
               <div className="flex items-center justify-between">
-                <h3 className="text-2xl font-semibold uppercase tracking-wide text-gray-900">
+                <h3
+                  // ✅ Codex visual scale reduction
+                  className="text-xl font-semibold uppercase tracking-wide text-gray-900"
+                >
                   {category}
                 </h3>
                 {itemsInCategory.length > preview.length ? (
                   <Link
                     href={`/category/${slug}`}
-                    className="inline-flex items-center rounded-full bg-gradient-to-r from-[#2563eb] to-[#3b82f6] px-5 py-2 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110"
+                    // ✅ Codex visual scale reduction
+                    className="inline-flex items-center rounded-full bg-gradient-to-r from-[#2563eb] to-[#3b82f6] px-4 py-1.5 text-xs font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:brightness-110"
                   >
                     {isAdmin ? "View category" : "Show More →"}
                   </Link>
                 ) : null}
               </div>
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <div
+                // ✅ Codex visual scale reduction
+                className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+              >
                 {preview.map((product) => (
                   <ProductCard
                     key={product.id}
