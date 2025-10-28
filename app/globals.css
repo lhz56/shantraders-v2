@@ -29,6 +29,7 @@
 @layer base {
   html {
     /* ✅ Codex fix for persistent Vercel scaling issue */
+    /* ✅ Codex investigation result: enforce baseline font metrics */
     margin: 0;
     padding: 0;
     width: 100%;
@@ -49,6 +50,7 @@
 
   body {
     /* ✅ Codex fix for persistent Vercel scaling issue */
+    /* ✅ Codex investigation result: neutralize font synthesis differences */
     margin: 0;
     padding: 0;
     width: 100%;
@@ -59,6 +61,8 @@
     -webkit-text-size-adjust: 100%; /* ✅ Codex fix for persistent Vercel scaling issue */
     transform-origin: 0 0; /* ✅ Codex fix for persistent Vercel scaling issue */
     transform: scale(1); /* ✅ Codex fix for persistent Vercel scaling issue */
+    font-synthesis: none; /* ✅ Codex investigation result */
+    font-optical-sizing: none; /* ✅ Codex investigation result */
     @apply bg-[var(--color-background)] text-[var(--color-foreground)] antialiased min-h-screen leading-relaxed;
   }
 
