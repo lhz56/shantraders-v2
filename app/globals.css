@@ -28,6 +28,7 @@
 
 @layer base {
   html {
+    /* ✅ Codex fix for persistent Vercel scaling issue */
     margin: 0;
     padding: 0;
     width: 100%;
@@ -41,9 +42,13 @@
     color: var(--color-foreground);
     background-color: var(--color-background);
     zoom: 1; /* ✅ Codex fix for Vercel scaling */
+    -webkit-text-size-adjust: 100%; /* ✅ Codex fix for persistent Vercel scaling issue */
+    transform-origin: 0 0; /* ✅ Codex fix for persistent Vercel scaling issue */
+    transform: scale(1); /* ✅ Codex fix for persistent Vercel scaling issue */
   }
 
   body {
+    /* ✅ Codex fix for persistent Vercel scaling issue */
     margin: 0;
     padding: 0;
     width: 100%;
@@ -51,10 +56,21 @@
     overflow-x: hidden;
     box-sizing: border-box;
     zoom: 1; /* ✅ Codex fix for Vercel scaling */
+    -webkit-text-size-adjust: 100%; /* ✅ Codex fix for persistent Vercel scaling issue */
+    transform-origin: 0 0; /* ✅ Codex fix for persistent Vercel scaling issue */
+    transform: scale(1); /* ✅ Codex fix for persistent Vercel scaling issue */
     @apply bg-[var(--color-background)] text-[var(--color-foreground)] antialiased min-h-screen leading-relaxed;
   }
 
   img {
     @apply select-none;
+  }
+}
+
+@media (min-resolution: 2dppx) {
+  html,
+  body {
+    transform: scale(1) !important; /* ✅ Codex fix for persistent Vercel scaling issue */
+    transform-origin: 0 0 !important;
   }
 }
