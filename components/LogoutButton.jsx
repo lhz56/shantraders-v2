@@ -21,20 +21,6 @@ export default function LogoutButton({ className = "" }) {
       return;
     }
 
-    try {
-      const response = await fetch("/auth/signout", {
-        method: "POST",
-        headers: {
-          "Cache-Control": "no-store",
-        },
-      });
-      if (!response.ok) {
-        console.warn("[auth.signOut(route)] response not ok", await response.text());
-      }
-    } catch (routeError) {
-      console.warn("[auth.signOut(route)]", routeError);
-    }
-
     router.replace("/");
     router.refresh();
     setLoading(false);

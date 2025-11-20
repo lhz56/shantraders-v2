@@ -87,13 +87,6 @@ export default async function Home() {
         <div className="pointer-events-none absolute right-4 top-6 z-40 flex flex-col gap-2 sm:right-10">
           <div className="flex gap-2">
             <CartButton />
-            <Link
-              href={adminCtaHref}
-              // ✅ Codex visual scale reduction
-              className="pointer-events-auto inline-flex items-center rounded-full bg-gradient-to-r from-[#2563eb] to-[#3b82f6] px-3.5 py-1.5 text-[0.7rem] font-semibold uppercase tracking-wide text-white shadow-lg transition-transform duration-200 hover:-translate-y-0.5 hover:brightness-110"
-            >
-              {adminCtaLabel}
-            </Link>
           </div>
         </div>
 

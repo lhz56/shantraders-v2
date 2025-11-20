@@ -1,10 +1,8 @@
 "use client";
 
+import Link from "next/link";
+
 const email = "shantradersinc@gmail.com";
-const phonePrimaryDisplay = "(347) 905-8484";
-const phonePrimaryHref = "+13479058484";
-const phoneSecondaryDisplay = "(631) 635-0786";
-const phoneSecondaryHref = "+16316350786";
 const year = new Date().getFullYear();
 
 export default function Footer() {
@@ -24,6 +22,12 @@ export default function Footer() {
           >
             Contact
           </p>
+          <Link
+            href="/admin/login"
+            className="inline-flex items-center rounded-full bg-gradient-to-r from-[#2563eb] to-[#3b82f6] px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wide text-white shadow-sm transition-transform duration-200 hover:-translate-y-0.5 hover:brightness-110"
+          >
+            Admin Login
+          </Link>
           <p>
             Email:{" "}
             <a
@@ -31,24 +35,6 @@ export default function Footer() {
               className="font-medium text-gray-800 underline-offset-4 hover:underline"
             >
               {email}
-            </a>
-          </p>
-          <p>
-            Phone:{" "}
-            <a
-              href={`tel:${phonePrimaryHref}`}
-              className="font-medium text-gray-800 underline-offset-4 hover:underline"
-            >
-              {phonePrimaryDisplay}
-            </a>
-          </p>
-          <p>
-            Phone 2:{" "}
-            <a
-              href={`tel:${phoneSecondaryHref}`}
-              className="font-medium text-gray-800 underline-offset-4 hover:underline"
-            >
-              {phoneSecondaryDisplay}
             </a>
           </p>
         </div>
