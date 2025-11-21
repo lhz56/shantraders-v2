@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { resolveImageUrl } from "@/lib/images";
 
 function cx(...classes) {
@@ -61,6 +61,8 @@ export default function ProductFormModal({
   const [file, setFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState("");
   const [category, setCategory] = useState(CATEGORY_ORDER[0]);
+  const dialogRef = useRef(null);
+  const previouslyFocused = useRef(null);
 
   useEffect(() => {
     if (!open) return;
@@ -85,6 +87,38 @@ export default function ProductFormModal({
       : "";
     setPreviewUrl(resolved);
   }, [open, initialData]);
+
+  useEffect(() => {
+    if (!open) return;
+
+    previouslyFocused.current = document.activeElement;
+    const focusTimer = setTimeout(() => {
+      if (dialogRef.current) {
+        const firstFocusable = dialogRef.current.querySelector(
+          "input, select, textarea, button, [href], [tabindex]:not([tabindex='-1'])"
+        );
+        firstFocusable?.focus();
+      }
+    }, 0);
+
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        onClose?.();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      clearTimeout(focusTimer);
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+      previouslyFocused.current?.focus?.();
+    };
+  }, [open, onClose]);
 
   useEffect(() => {
     if (!file) return;
@@ -127,12 +161,18 @@ export default function ProductFormModal({
 
   return (
     <div
-      // ✅ Codex visual scale reduction
-      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 px-3 py-10 backdrop-blur-sm"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/50 px-3 py-6 backdrop-blur"
+      onClick={() => !disabled && onClose?.()}
+      role="presentation"
     >
       <div
-        // ✅ Codex visual scale reduction
-        className="relative w-full max-w-md rounded-3xl bg-white p-6 shadow-2xl ring-1 ring-slate-200"
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="product-form-title"
+        aria-describedby="product-form-description"
+        onClick={(event) => event.stopPropagation()}
+        className="relative w-full max-w-md rounded-3xl bg-white p-6 shadow-2xl ring-1 ring-slate-200 max-h-[90vh] overflow-y-auto focus:outline-none"
       >
         <button
           type="button"
@@ -151,12 +191,14 @@ export default function ProductFormModal({
         >
           <h2
             // ✅ Codex visual scale reduction
+            id="product-form-title"
             className="text-lg font-semibold text-slate-900"
           >
             {title}
           </h2>
           <p
             // ✅ Codex visual scale reduction
+            id="product-form-description"
             className="text-xs text-slate-500"
           >
             {isEditable

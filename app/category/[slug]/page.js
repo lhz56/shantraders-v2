@@ -89,6 +89,36 @@ export default async function CategoryPage({ params }) {
           </p>
         </header>
 
+        {/* ✅ Category nav moved above products (non-sticky) */}
+        <nav
+          aria-label="Category navigation"
+          className="rounded-xl bg-white p-3.5 shadow-sm ring-1 ring-gray-100"
+        >
+          <Link
+            href="/"
+            // ✅ Codex visual scale reduction
+            className="inline-flex items-center rounded-md bg-gray-200 px-3.5 py-1.5 text-xs font-semibold text-gray-800 shadow-sm transition-colors hover:bg-gray-300"
+          >
+            ← Back to home
+          </Link>
+          <div className="mt-3 overflow-x-auto whitespace-nowrap no-scrollbar">
+            {CATEGORY_ORDER.map((item) => (
+              <Link
+                key={item}
+                href={`/category/${categoryToSlug(item)}`}
+                // ✅ Codex visual scale reduction
+                className={`mr-2 inline-flex rounded-full border px-2.5 py-0.5 text-[0.65rem] font-medium transition ${
+                  item === category
+                    ? "border-gray-800 bg-gray-900 text-white"
+                    : "border-gray-200 bg-white text-gray-600 hover:bg-gray-100"
+                }`}
+              >
+                {item}
+              </Link>
+            ))}
+          </div>
+        </nav>
+
         {products.length === 0 ? (
           <div
             // ✅ Codex visual scale reduction
@@ -110,39 +140,6 @@ export default async function CategoryPage({ params }) {
         ) : (
           <CategoryListing products={products} />
         )}
-
-        <div
-          // ✅ Codex visual scale reduction
-          className="flex flex-wrap items-center justify-between gap-1.5 rounded-xl bg-white p-3.5 shadow-sm ring-1 ring-gray-100"
-        >
-          <Link
-            href="/"
-            // ✅ Codex visual scale reduction
-            className="inline-flex items-center rounded-md bg-gray-200 px-3.5 py-1.5 text-xs font-semibold text-gray-800 shadow-sm transition-colors hover:bg-gray-300"
-          >
-            ← Back to home
-          </Link>
-
-          <div
-            // ✅ Codex visual scale reduction
-            className="flex flex-wrap gap-1.5"
-          >
-            {CATEGORY_ORDER.map((item) => (
-              <Link
-                key={item}
-                href={`/category/${categoryToSlug(item)}`}
-                // ✅ Codex visual scale reduction
-                className={`rounded-full border px-2.5 py-0.5 text-[0.65rem] font-medium transition ${
-                  item === category
-                    ? "border-gray-800 bg-gray-900 text-white"
-                    : "border-gray-200 bg-white text-gray-600 hover:bg-gray-100"
-                }`}
-              >
-                {item}
-              </Link>
-            ))}
-          </div>
-        </div>
 
       </section>
     </main>
